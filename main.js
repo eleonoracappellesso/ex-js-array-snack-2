@@ -57,6 +57,7 @@ const longBooksTitles = longBooks.map(book => book.title);
 
 console.log(longBooksTitles);
 
+
 /*Snack 2 - Il primo libro scontato
 Creare un array(availableBooks) che contiene tutti i libri disponibili.
 Crea un array(discountedBooks) con gli availableBooks, ciascuno con il prezzo scontato del 20 % (mantieni lo stesso formato e arrotonda al centesimo)
@@ -82,3 +83,34 @@ if (fullPricedBook) {
 } else {
     console.log("Non ci sono libri scontati il cui prezzo è un numero intero.");
 }
+
+
+/*Snack 3 - Ordinare gli Autori
+Creare un array (authors) che contiene gli autori dei libri.
+Crea una variabile booleana (areAuthorsAdults) per verificare se gli autori sono tutti maggiorenni.
+Ordina l’array authors in base all’età, senza creare un nuovo array.
+(se areAuthorsAdult è true, ordina in ordine crescente, altrimenti in ordine decrescente) */
+
+const authors = books.map(book => book.author);
+
+const areAuthorsAdult = authors.every(author => author.age >= 18);
+
+authors.sort((a, b) => areAuthorsAdult ? a.age - b.age : b.age - a.age);
+
+console.log(authors);
+
+
+/*Snack 3 - Calcola l’età media
+Creare un array (ages) che contiene le età degli autori dei libri.
+Calcola la somma delle età (agesSum) usando reduce.
+Stampa in console l’età media degli autori dei libri. */
+
+const ages = authors.map(author => author.age);
+
+const agesSum = ages.reduce((acc, age) => {
+    return acc + age;
+}, 0);
+
+const averageAge = agesSum / ages.length;
+
+console.log(`L'età media degli autori è di ${averageAge} anni`);
